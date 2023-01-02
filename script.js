@@ -1,19 +1,18 @@
 const playersDiv = document.getElementById("players");
 const selectButtons = document.querySelectorAll(".select_btn");
-const selectButtons1 = document.getElementsByClassName("select_btn");
-// console.log(selectButtons)
-// console.log(selectButtons1)
-const calculateBtn = document.getElementById("calculate_btn");
-const calculateTotalBtn = document.getElementById("calculate_total_btn");
+
+const calculateBtn = document.querySelector("#calculate_btn");
+const calculateTotalBtn = document.querySelector("#calculate_total_btn");
 
 const ul = document.getElementById("unordered_list");
 
-const perPlayerCost =parseInt(document.getElementById("per_player_cost").value);
-const playersExpenses = document.getElementById("players_expenses");
+const perPlayerCost =parseInt(document.querySelector("#per_player_cost").value);
+const playersExpenses = document.querySelector("#players_expenses");
+console.log(playersExpenses)
+
 const coach_fee = parseInt(document.getElementById("coach_fee").value);
-console.log();
 const manager_fee = parseInt(document.getElementById("manager_fee").value);
-console.log(manager_fee);
+// console.log(manager_fee);
 
 const total = document.getElementById("total");
 
@@ -36,26 +35,13 @@ for (let i = 0; i < selectButtons.length; i++) {
 // calculate players expenses
 function calculatePlayerExpenses() {
     const playerCost = perPlayerCost*players.length;
-    playersExpenses.innerText = playerCost;
-  
-    // console.log(playerExpenses);
+   playersExpenses.innerText = playerCost;
+//    console.log(playersExpenses.innerText);
+   return playerCost;
 }
 calculateBtn.addEventListener('click', calculatePlayerExpenses);
 
-
 function calculateTotal(){
-    const playerExpensesInNumber =parseInt(playersExpenses)
-    console.log(typeof(playerExpensesInNumber));
-    console.log(typeof(manager_fee));
-    console.log(typeof(coach_fee));
-
-    const totalCost= playerExpensesInNumber + manager_fee + coach_fee;
-    console.log(isNaN(totalCost))
-    console.log(totalCost)
+    const totalCost= calculatePlayerExpenses() + manager_fee + coach_fee;
     total.innerText= totalCost;
 }
-
-// var allButtons = document.querySelectorAll('div[class^=button]');
-// console.log("Found", allButtons.length, "div which class starts with “button”.");
-
-// for (var i = 0; i < allButtons.length; i++) {  allButtons[i].addEventListener('click', function() {    console.clear();    console.log("You clicked:", this.innerHTML);  });}
